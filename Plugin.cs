@@ -1,0 +1,105 @@
+﻿using System;
+using System.Collections.Generic;
+using BepInEx;
+using Seralyth.Classes;
+using Seralyth.Classes.Menu;
+using Seralyth.Menu;
+using Seralyth.Mods;
+using TFOEsCoolPlugin.Mods;
+using UnityEngine;
+using WebSocketSharp;
+using static Seralyth.Menu.Main;
+
+namespace TFOEsCoolPlugin
+{
+    // NOTICE FROM TFOE
+    // Any use of this template to make a plugin that exploits our console system is not permitted
+    // Punishment for breaking this rule is a blacklist from using TFOE's Cool Menu and a ban from the discord.
+    public class Plugin
+    {
+        public static string CategoryName = "Plugin Mods";
+        public static string Name = "Example Plugin";
+        public static string Description = "An example plugin used for testing.";
+        public struct ModData
+        {
+            public string Name;
+            public string Description;
+            public Action Method;
+        }
+        public static SortedDictionary<int, ModData> SortedMods = new SortedDictionary<int, ModData>();
+        
+        public static void AddSortedMod()
+        {
+            SortedMods.Clear();
+
+            
+            SortedMods.Add(1, new ModData
+            {
+                Name = "Test Inputs",
+                Description = "Sends a notification telling you what input you pressed.",
+                Method = () => { PluginMods.testinputs(); }
+            });
+
+            
+            SortedMods.Add(2, new ModData
+            {
+                Name = "Speedboost",
+                Description = "Changes your speed to be faster than usual.",
+                Method = () => { Movement.SpeedBoost(); }
+            });
+        }
+        public static void OnEnable()
+        {
+            int category = Buttons.AddCategory(CategoryName);
+            Buttons.AddButton(Buttons.GetCategory("Main"), new ButtonInfo { buttonText = CategoryName, method = () =>  Buttons.CurrentCategoryName = "Plugin Mods", isTogglable = false, toolTip = "Opens the plugin mods tab.", legal = true });
+        }
+
+        // This runs when the plugin stops, or when plugins are reloaded
+        // You should put all of your removing of buttons / categories here
+        public static void OnDisable()
+        {
+            UnityEngine.Debug.Log("Plugin " + Name + " has been disabled!");
+
+            Buttons.RemoveCategory("Plugin Mods");
+            Buttons.RemoveButton(Buttons.GetCategory("Main"), "Plugin Mods");
+        }
+        
+        // This runs every frame before the mods
+        public static void Update()
+        {
+            // UnityEngine.Debug.Log(Time.time);
+        }
+
+        // This runs when the menu UI is open (togglable with backslash)
+        // I don't recommend using this as an update method
+        public static void OnGUI()
+        {
+            // GUI.Button(new Rect(10, 10, 200, 100), "Test Button");
+        }
+        
+        public static List<int> ModMethod = new List<int>()
+        {
+            1,
+            2
+        };
+        public static void AddMods()
+        {
+            // Loops through the mods perfectly in 1, 2, 3... order without duplicating buttons
+            foreach (KeyValuePair<int, ModData> kvp in SortedMods)
+            {
+                ModData mod = kvp.Value;
+
+                Buttons.AddButton(Buttons.GetCategory(CategoryName), new ButtonInfo
+                {
+                    buttonText = mod.Name,
+                    method = mod.Method,
+                    isTogglable = true,
+                    toolTip = mod.Description
+                });
+            }
+        }
+
+
+
+    }
+}
