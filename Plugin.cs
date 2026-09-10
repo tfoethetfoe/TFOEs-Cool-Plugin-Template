@@ -39,14 +39,6 @@ namespace TFOEsCoolPlugin
                 Description = "Sends a notification telling you what input you pressed.",
                 Method = () => { PluginMods.testinputs(); }
             });
-
-            
-            SortedMods.Add(2, new ModData
-            {
-                Name = "Speedboost",
-                Description = "Changes your speed to be faster than usual.",
-                Method = () => { Movement.SpeedBoost(); }
-            });
         }
         public static void OnEnable()
         {
