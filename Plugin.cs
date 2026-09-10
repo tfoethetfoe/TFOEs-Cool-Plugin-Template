@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using BepInEx;
 using Seralyth.Classes;
@@ -28,7 +28,7 @@ namespace TFOEsCoolPlugin
         }
         public static SortedDictionary<int, ModData> SortedMods = new SortedDictionary<int, ModData>();
         
-        public static void AddSortedMod()
+        public static void AddSortedMods()
         {
             SortedMods.Clear();
 
@@ -52,6 +52,9 @@ namespace TFOEsCoolPlugin
         {
             int category = Buttons.AddCategory(CategoryName);
             Buttons.AddButton(Buttons.GetCategory("Main"), new ButtonInfo { buttonText = CategoryName, method = () =>  Buttons.CurrentCategoryName = "Plugin Mods", isTogglable = false, toolTip = "Opens the plugin mods tab.", legal = true });
+            Buttons.AddButton(Buttons.GetCategory(CategoryName), new ButtonInfo { buttonText = CategoryName, method = () => Buttons.CurrentCategoryName = "Main", isTogglable = false, toolTip = "Exits the plugin mods tab.", legal = true });
+            AddSortedMods();
+            AddButtons();
         }
 
         // This runs when the plugin stops, or when plugins are reloaded
@@ -82,7 +85,7 @@ namespace TFOEsCoolPlugin
             1,
             2
         };
-        public static void AddMods()
+        public static void AddButtons()
         {
             // Loops through the mods perfectly in 1, 2, 3... order without duplicating buttons
             foreach (KeyValuePair<int, ModData> kvp in SortedMods)
