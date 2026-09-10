@@ -59,14 +59,14 @@
     <Reference Include="PlayFab">
       <HintPath>$(GameAssemblyPath)\PlayFab.dll</HintPath>
     </Reference>
+    <Reference Include="Seralyth Menu Debug">
+      <HintPath>..\Seralyth-Menu\bin\Debug\netstandard2.1\Seralyth Menu Debug.dll</HintPath>
+    </Reference>
     <Reference Include="System.EnterpriseServices">
       <HintPath>$(GameAssemblyPath)\System.EnterpriseServices.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceModel.Internals">
       <HintPath>$(GameAssemblyPath)\System.ServiceModel.Internals.dll</HintPath>
-    </Reference>
-    <Reference Include="Seralyth Menu Debug">
-      <HintPath>..\TFOEsCoolMenu1.0.3.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Animation.Rigging">
       <HintPath>$(GameAssemblyPath)\Unity.Animation.Rigging.dll</HintPath>
