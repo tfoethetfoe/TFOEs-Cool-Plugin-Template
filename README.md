@@ -1,5 +1,5 @@
 # TFOE's Cool Plugin Template
-TFOE's Cool Plugin Template is a template used for developing custom plugins for TFOE's Cool Menu 1.0.3+. This plugin template is meant for plugin developers, if you don't know what you're doing stick to the plugin library.
+TFOE's Cool Plugin Template is a template used for developing custom plugins for TFOE's Cool Menu 1.0.4+. This plugin template is meant for plugin developers, if you don't know what you're doing stick to the plugin library.
 
 ## Do I need permission to use this?
 No, this template is free and public for anyone to use. You are welcome to utilize it for your projects, modify it to suit your needs, and share it with others. We believe in a collaborative and open community where resources are accessible to all.
