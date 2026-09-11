@@ -55,8 +55,8 @@ namespace TFOEsCoolPlugin
         {
             UnityEngine.Debug.Log("Plugin " + Name + " has been disabled!");
 
-            Buttons.RemoveCategory("Plugin Mods");
-            Buttons.RemoveButton(Buttons.GetCategory("Main"), "Plugin Mods");
+            Buttons.RemoveCategory(CategoryName);
+            Buttons.RemoveButton(Buttons.GetCategory("Main"), CategoryName);
         }
         
         // This runs every frame before the mods
