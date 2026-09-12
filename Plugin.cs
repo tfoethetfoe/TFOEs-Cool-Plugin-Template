@@ -43,8 +43,8 @@ namespace TFOEsCoolPlugin
         public static void OnEnable()
         {
             int category = Buttons.AddCategory(CategoryName);
-            Buttons.AddButton(Buttons.GetCategory("Main"), new ButtonInfo { buttonText = CategoryName, method = () =>  Buttons.CurrentCategoryName = "Plugin Mods", isTogglable = false, toolTip = "Opens the plugin mods tab.", legal = true });
-            Buttons.AddButton(Buttons.GetCategory(CategoryName), new ButtonInfo { buttonText = CategoryName, method = () => Buttons.CurrentCategoryName = "Main", isTogglable = false, toolTip = "Exits the plugin mods tab.", legal = true });
+            Buttons.AddButton(Buttons.GetCategory("Main"), new ButtonInfo { buttonText = CategoryName, method = () =>  Buttons.CurrentCategoryName = CategoryName , isTogglable = false, toolTip = "Opens the plugin mods tab.", legal = true });
+            Buttons.AddButton(Buttons.GetCategory(CategoryName), new ButtonInfo { buttonText = "Exit " + CategoryName, method = () => Buttons.CurrentCategoryName = "Main", isTogglable = false, toolTip = "Exits the plugin mods tab.", legal = true });
             AddSortedMods();
             AddButtons();
         }
