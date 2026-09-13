@@ -25,6 +25,10 @@ namespace TFOEsCoolPlugin
             public string Name;
             public string Description;
             public Action Method;
+            public bool IsToggle;
+            public int ToggleMethod;
+            public Action EnableMethod;
+            public Action DisableMethod;
         }
         public static SortedDictionary<int, ModData> SortedMods = new SortedDictionary<int, ModData>();
         
@@ -84,13 +88,30 @@ namespace TFOEsCoolPlugin
             {
                 ModData mod = kvp.Value;
 
-                Buttons.AddButton(Buttons.GetCategory(CategoryName), new ButtonInfo
-                {
-                    buttonText = mod.Name,
-                    method = mod.Method,
-                    isTogglable = true,
-                    toolTip = mod.Description
-                });
+               if (mod.ToggleMethod == 0)
+{
+
+    Buttons.AddButton(Buttons.GetCategory(CategoryName), new ButtonInfo
+    {
+
+        buttonText = mod.Name,
+        method = mod.Method,
+        isTogglable = mod.IsToggle,
+        toolTip = mod.Description
+    });
+}
+if (mod.ToggleMethod == 1)
+{
+    Buttons.AddButton(Buttons.GetCategory(CategoryName), new ButtonInfo
+    {
+
+        buttonText = mod.Name,
+        enableMethod = mod.EnableMethod,
+        disableMethod = mod.DisableMethod,
+        isTogglable = mod.IsToggle,
+        toolTip = mod.Description
+    });
+}
             }
         }
 
