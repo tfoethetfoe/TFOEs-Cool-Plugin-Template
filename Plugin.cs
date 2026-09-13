@@ -17,6 +17,8 @@ namespace TFOEsCoolPlugin
     // Punishment for breaking this rule is a blacklist from using TFOE's Cool Menu and a ban from the discord.
     public class Plugin
     {
+        // 0 = Custom Category, 1 = GUI
+        public static int PluginType = 0;
         public static string CategoryName = "Plugin Mods";
         public static string Name = "Example Plugin";
         public static string Description = "An example plugin used for testing.";
